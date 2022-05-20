@@ -3,6 +3,7 @@ package com.mashibing.dao;
 import com.mashibing.bean.Emp;
 import org.apache.ibatis.annotations.Param;
 
+
 import java.util.List;
 
 public interface EmpDao {
