@@ -16,6 +16,7 @@
         <!--开启驼峰标识验证-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <!--配置懒加载开关-->
+        <!--配置关联查询懒加载开关-->
         <setting name="lazyLoadingEnabled" value="true"/>
         <setting name="aggressiveLazyLoading" value="false"/>
         <setting name="cacheEnabled" value="true"/>
