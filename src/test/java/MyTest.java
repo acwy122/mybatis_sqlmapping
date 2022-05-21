@@ -148,18 +148,13 @@ public class MyTest {
         SqlSession sqlSession2 = sqlSessionFactory.openSession();
         //获取对应的映射接口对象
         EmpDao mapper = sqlSession.getMapper(EmpDao.class);
-        EmpDao mapper2 = sqlSession.getMapper(EmpDao.class);
+        EmpDao mapper2 = sqlSession2.getMapper(EmpDao.class);
         Emp emp = mapper.selectEmpByEmpno(7369);
         System.out.println(emp);
         System.out.println("==================");
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         emp.setEname("Teacher");
-//        Integer update = mapper2.update(emp);
-//        System.out.println(update);
+        Integer update = mapper2.update(emp);
+        System.out.println(update);
 //        sqlSession.clearCache();
         System.out.println("==================");
         emp = mapper.selectEmpByEmpno(7369);
@@ -181,6 +176,28 @@ public class MyTest {
         System.out.println("====================");
         Emp emp1 = mapper2.selectEmpByEmpno(7369);
         System.out.println(emp1);
+        sqlSession2.close();
+    }
+
+    @Test
+    public void test10(){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        EmpDao mapper = sqlSession.getMapper(EmpDao.class);
+        Emp emp = mapper.selectEmpByEmpno(7369);
+        System.out.println(emp);
+        sqlSession.close();
+
+        SqlSession sqlSession2 = sqlSessionFactory.openSession();
+        EmpDao mapper2= sqlSession2.getMapper(EmpDao.class);
+        Emp emp2 = mapper2.selectEmpByEmpno(7369);
+        System.out.println(emp2);
+        Emp emp3 = mapper2.selectEmpByEmpno(7369);
+        System.out.println(emp3);
+
+        Emp emp4 = mapper2.selectEmpByEmpno(7499);
+        System.out.println(emp4);
+        Emp emp5 = mapper2.selectEmpByEmpno(7499);
+        System.out.println(emp5);
         sqlSession2.close();
 
     }
